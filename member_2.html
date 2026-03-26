@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Professional Portfolio - Developer CV</title>
+    
+    <!-- Tailwind CSS (CDN for development only) -->
+    <script>
+        // Suppress Tailwind CDN warning
+        if (typeof console !== 'undefined' && console.warn) {
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args[0] && typeof args[0] === 'string' && args[0].includes('tailwindcss.com')) {
+                    return; // Suppress Tailwind CDN warning
+                }
+                originalWarn.apply(console, args);
+            };
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="member_2_style.css">
+</head>
+<body class="body-main" data-theme="dark" data-lang="en" data-dir="ltr">
+    
+    <!-- Loading Screen -->
+    <div class="loader-screen" id="loader">
+        <div class="loader-content">
+            <div class="loader-code-text">
+                <div class="code-line" data-line="1">const portfolio = {</div>
+                <div class="code-line" data-line="2">  loading: true,</div>
+                <div class="code-line" data-line="3">  status: 'initializing...'</div>
+                <div class="code-line" data-line="4">};</div>
+            </div>
+            <div class="loader-spinner-wrapper">
+                <div class="loader-spinner"></div>
+            </div>
+            <div class="loader-progress-wrapper">
+                <div class="loader-progress-bar"></div>
+            </div>
+            <div class="loader-percentage" id="loaderPercent">0%</div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header" id="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-logo">
+                    <span class="logo-bracket">[</span> 
+    
+                    <span class="logo-text">AI, Data</span> 
+                    
+                    <span class="logo-bracket">]</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text" data-text-en="Home" data-text-ar="Trang chủ">Home</span>
+                </a>
+                <a href="#about" class="nav-link" data-section="about">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text" data-text-en="About" data-text-ar="Giới thiệu">About</span>
+                </a>
+                <a href="#skills" class="nav-link" data-section="skills">
+                    <i class="fas fa-code"></i>
+                    <span class="nav-text" data-text-en="Skills" data-text-ar="Kỹ năng">Skills</span>
+                </a>
+                <a href="#experience" class="nav-link" data-section="experience">
+                    <i class="fas fa-briefcase"></i>
+                    <span class="nav-text" data-text-en="Experience" data-text-ar="Kinh nghiệm">Experience</span>
+                </a>
+                <a href="#projects" class="nav-link" data-section="projects">
+                    <i class="fas fa-rocket"></i>
+                    <span class="nav-text" data-text-en="Projects" data-text-ar="Dự án">Projects</span>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span class="nav-text" data-text-en="Contact" data-text-ar="Liên hệ">Contact</span>
+                </a>
+            </div>
+            
+            <div class="nav-controls">
+                <button class="lang-toggle" id="langToggle" title="Toggle Language">
+                    <i class="fas fa-language"></i>
+                    <span class="lang-text">VN</span>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle" title="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="code-grid-bg"></div>
+                <div class="floating-particles" id="particles"></div>
+            </div>
+            
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-greeting">
+                        <span class="greeting-text" data-text-en="Hello, I'm TRAN Minh Hoan ..." data-text-ar="Xin chào, tôi là Trần Minh Hoàn ...">Hello, I'm</span>
+                        <span class="greeting-cursor">|</span>
+                    </div>
+                    
+                    
+                    <div class="hero-title">
+                        <span class="title-text" data-text-en="AI Engineer & Data Scientist" data-text-ar="Kỹ sư AI & Nhà khoa học dữ liệu">AI Engineer & Data Scientist</span>
+                    </div>
+                    
+                    <p class="hero-description" data-text-en="AI Engineer & Data Scientist passionate about turning data into intelligent, scalable solutions." data-text-ar="Kỹ sư AI & Nhà khoa học dữ liệu: Khai phá tiềm năng dữ liệu và xây dựng các giải pháp trí tuệ nhân tạo thông minh.">
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <span data-text-en="Get In Touch" data-text-ar="Liên hệ ngay">Get In Touch</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <span data-text-en="View Projects" data-text-ar="Xem dự án">View Projects</span>
+                            <i class="fas fa-code"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="hero-social">
+                        <a href="https://github.com/MinhHoan1234" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Github">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/minhhoantran" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Linkedin-in">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/vung.vung.12720100" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-container">
+                        <div class="profile-image-glow"></div>
+                        <div class="profile-image-frame">
+                            <div class="profile-image" id="profileImage">
+                                <!-- <div class="profile-placeholder">
+                                    <i class="fas fa-code"></i> -->
+                                <img src="member2.jpg" alt="AI Engineer" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="floating-badge badge-1">
+                            <i class="fab fa-python"></i>
+                            <div class="badge-content">
+                                <span class="badge-title">Data Science</span>
+                                <span class="badge-libs">Pandas, NumPy, Scikit-learn, ...</span>
+                            </div>
+                        </div>
+                        <div class="floating-badge badge-2">
+                            <i class="fas fa-brain"></i>
+                            <div class="badge-content">
+                                <span class="badge-title">Deep Learning</span>
+                                <span class="badge-libs">PyTorch, TensorFlow, NLP, ...</span>
+                            </div>
+                        </div>
+                        <div class="floating-badge badge-3">
+                            <i class="fas fa-database"></i>
+                            <div class="badge-content">
+                                <span class="badge-title">Big Data & MLOps</span>
+                                <span class="badge-libs">SQL, Tableau, AWS, ...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span class="scroll-text" data-text-en="Scroll Down" data-text-ar="Cuộn xuống">Scroll Down</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">01.</span>
+                    <h2 class="section-title">
+                        
+                        <span class="title-text" data-text-en="About me" data-text-ar="Giới thiệu về tôi">About Me</span>
+                        
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text-wrapper">
+                        <div class="about-intro">
+                            <p class="about-text" data-text-en="A dedicated AI & Data Analytics Master's student at IÉSEG School of Management with a solid foundation in Artificial Intelligence from FPT University. Proven experience in developing recommendation systems and classification models during an internship at VTV. Proficient in Python, SQL, Tableau, and AWS, with a strong passion for transforming complex data into actionable business insights. Seeking to leverage my technical expertise in Machine Learning  and cloud platforms to drive value as a Data Scientist." data-text-ar="Tôi là học viên Thạc sĩ chuyên ngành AI & Phân tích Dữ liệu tại Trường Quản lý IÉSEG, với nền tảng vững chắc về Trí tuệ Nhân tạo từ Đại học FPT. Có kinh nghiệm thực tế trong việc phát triển hệ thống gợi ý và các mô hình phân loại trong quá trình thực tập tại VTV. Thành thạo Python, SQL, Tableau và AWS, đồng thời có niềm đam mê mạnh mẽ trong việc chuyển đổi dữ liệu phức tạp thành các insight kinh doanh có giá trị. Mong muốn ứng dụng chuyên môn về Machine Learning và nền tảng điện toán đám mây để tạo ra giá trị với vai trò Data Scientist.">
+                                I'm a passionate Full Stack Developer with over 5 years of experience in building modern web applications and mobile solutions. I specialize in JavaScript technologies, React, Node.js, and creating beautiful user interfaces.
+                            </p>
+                        </div>
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div style="display: flex; justify-content: center; align-items: baseline;">
+                                        <div class="stat-number" data-count="10">0</div>
+                                        <div class="stat-plus" style="margin-left: 5px;">+</div>   
+                                    </div> <div class="stat-label" data-text-en="Projects" data-text-ar="Dự án">Projects</div>
+                                </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="6">0</div>
+                                <div class="stat-label" data-text-en="Years of working and learning experience" data-text-ar="Năm kinh nghiệm làm việc và học tập">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-count="5">0</div>
+                                <div class="stat-label" data-text-en="Certifications" data-text-ar="Chứng chỉ">Certifications</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-image-wrapper">
+                        <div class="about-image-container">
+                            <div class="code-block">
+                                <div class="code-line">
+                                    <span class="code-variable">__author__</span>
+                                    <span class="code-operator">=</span>
+                                    <span class="code-string">'Tran Minh Hoan'</span>
+                                </div>
+
+                                <div class="code-line"><br></div>
+
+                                <div class="code-line">
+                                    <span class="code-keyword">def</span>
+                                    <span class="code-variable">ai_engineer</span>
+                                    <span class="code-brace">():</span>
+                                </div>
+
+                                <div class="code-line indent">
+                                    <span class="code-keyword">return</span>
+                                    <span class="code-brace">{</span>
+                                </div>
+
+                                <div class="code-line indent" style="padding-left: 3rem;">
+                                    <span class="code-string">'focus'</span>
+                                    <span class="code-operator">:</span>
+                                    <span class="code-bracket">[</span>
+                                    <span class="code-string">'Machine Learning'</span>
+                                    <span class="code-comma">,</span>
+                                    <span class="code-string">'Deep Learning'</span>
+                                    <span class="code-bracket">]</span>
+                                </div>
+
+                                <div class="code-line indent" style="padding-left: 3rem;">
+                                    <span class="code-string">'tools'</span>
+                                    <span class="code-operator">:</span>
+                                    <span class="code-bracket">[</span>
+                                    <span class="code-string">'PyTorch'</span>
+                                    <span class="code-comma">,</span>
+                                    <span class="code-string">'TensorFlow'</span>
+                                    <span class="code-comma">,</span>
+                                    <span class="code-string">'Scikit learn'</span>
+                                    <span class="code-bracket">]</span>
+                                </div>
+
+                                <div class="code-line indent">
+                                    <span class="code-brace">}</span>
+                                </div>
+
+                                <div class="code-line"><br></div> 
+
+                                <div class="code-line">
+                                    <span class="code-keyword">def</span>
+                                    <span class="code-variable">data_scientist</span>
+                                    <span class="code-brace">():</span>
+                                </div>
+
+                                <div class="code-line indent">
+                                    <span class="code-keyword">return</span>
+                                    <span class="code-brace">{</span>
+                                </div>
+
+                                <div class="code-line indent" style="padding-left: 3rem;">
+                                    <span class="code-string">'stack'</span>
+                                    <span class="code-operator">:</span>
+                                    <span class="code-bracket">[</span>
+                                    <span class="code-string">'Pandas'</span>
+                                    <span class="code-comma">,</span>
+                                    <span class="code-string">'SQL'</span>
+                                    <span class="code-comma">,</span>
+                                    <span class="code-string">'Tableau'</span>
+                                    <span class="code-comma">,</span>
+                                    <span class="code-string">'AWS'</span>
+                                    <span class="code-bracket">]</span>
+                                </div>
+
+                                <div class="code-line indent" style="padding-left: 3rem;">
+                                    <span class="code-string">'goal'</span>
+                                    <span class="code-operator">:</span>
+                                    <span class="code-string">'Extract Insights'</span>
+                                </div>
+
+                                <div class="code-line indent">
+                                    <span class="code-brace">}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">02.</span>
+                    <h2 class="section-title">
+                        
+                        <span class="title-text" data-text-en="Skills" data-text-ar="Kỹ năng">Skills</span>
+                        
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="category-title" data-text-en="Data & Cloud" data-text-ar="Dữ liệu & Cloud">Data & Cloud</h3>
+                    <div class="skill-items">
+                        
+                        <div class="skill-item" data-skill="Pandas" data-percent="95">
+                            <div class="skill-header">
+                                <span class="skill-name">Pandas</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-skill="SQL" data-percent="90">
+                            <div class="skill-header">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-skill="Apache Spark" data-percent="80">
+                            <div class="skill-header">
+                                <span class="skill-name">Apache Spark</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-skill="AWS" data-percent="75">
+                            <div class="skill-header">
+                                <span class="skill-name">AWS</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-skill="Tableau" data-percent="85">
+                            <div class="skill-header">
+                                <span class="skill-name">Tableau</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title" data-text-en="AI & Analytics" data-text-ar="Phân tích & AI">AI & Analytics</h3>
+                    <div class="skill-items">
+                        
+                        <div class="skill-item" data-skill="PyTorch" data-percent="85">
+                            <div class="skill-header">
+                                <span class="skill-name">PyTorch</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-skill="Scikit-learn" data-percent="90">
+                            <div class="skill-header">
+                                <span class="skill-name">Scikit-learn</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-skill="R Language" data-percent="70">
+                            <div class="skill-header">
+                                <span class="skill-name">R Language</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-skill="Visualization" data-percent="85">
+                            <div class="skill-header">
+                                <span class="skill-name">Visualization</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title" data-text-en="Tools & Others" data-text-ar="Công cụ khác">Tools & Others</h3>
+                    <div class="skill-items">
+                        
+                        <div class="skill-item" data-skill="Git" data-percent="70">
+                            <div class="skill-header">
+                                <span class="skill-name">Git</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-skill="HTML" data-percent="55">
+                            <div class="skill-header">
+                                <span class="skill-name">HTML</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item" data-skill="CSS" data-percent="50">
+                            <div class="skill-header">
+                                <span class="skill-name">CSS</span>
+                                <span class="skill-percent">0%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section experience-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">03.</span>
+                    <h2 class="section-title">
+                        <span class="title-text" data-text-en="Experiences" data-text-ar="Kinh nghiệm">Experience</span>
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <!-- <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2022 - Present</div>
+                                <div class="timeline-badge">Current</div>
+                            </div>
+                            <h3 class="timeline-title" data-text-en="Senior Full Stack Developer" data-text-ar="Lập trình viên Full Stack Cao cấp">Senior Full Stack Developer</h3>
+                            <div class="timeline-company">
+                                <i class="fas fa-building"></i>
+                                Tech Company Inc.
+                            </div>
+                            <p class="timeline-description" data-text-en="Leading a team of developers in building complex web applications using React and Node.js. Developing advanced user interfaces and optimizing performance. Implementing microservices architecture and CI/CD pipelines." data-text-ar="Dẫn dắt nhóm lập trình viên xây dựng các ứng dụng web phức tạp sử dụng React và Node.js. Phát triển giao diện người dùng nâng cao và tối ưu hiệu năng. Triển khai kiến trúc microservices và các pipeline CI/CD.">
+                                Leading a team of developers in building complex web applications using React and Node.js. Developing advanced user interfaces and optimizing performance. Implementing microservices architecture and CI/CD pipelines.
+                            </p>
+                            <div class="timeline-achievements">
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Led team of 5 developers" data-text-ar="Dẫn dắt nhóm 5 lập trình viên...">Led team of 5 developers</span>
+                                </div>
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Improved performance by 40%" data-text-ar="Hiệu suất được cải thiện 40%".>Improved performance by 40%</span>
+                                </div>
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Deployed 20+ production apps" data-text-ar="Đã triển khai hơn 20 ứng dụng sản xuất.">Deployed 20+ production apps</span>
+                                </div>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">MongoDB</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2020 - 2022</div>
+                            </div>
+                            <h3 class="timeline-title" data-text-en="Frontend Developer" data-text-ar="Lập trình viên Frontend">Frontend Developer</h3>
+                            <div class="timeline-company">
+                                <i class="fas fa-building"></i>
+                                Digital Solutions
+                            </div>
+                            <p class="timeline-description" data-text-en="Developed interactive user interfaces using React and Vue.js. Worked on improving user experience and performance optimization. Collaborated with designers to implement pixel-perfect designs." data-text-ar="Phát triển giao diện người dùng tương tác bằng React và Vue.js. Tối ưu hóa trải nghiệm người dùng và hiệu năng ứng dụng. Phối hợp chặt chẽ với đội ngũ thiết kế để triển khai giao diện chính xác đến từng pixel.">
+                                Developed interactive user interfaces using React and Vue.js. Worked on improving user experience and performance optimization. Collaborated with designers to implement pixel-perfect designs.
+                            </p>
+                            <div class="timeline-achievements">
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Built 15+ responsive websites" data-text-ar="Xây dựng hơn 15 website responsive, tương thích đa thiết bị.">Built 15+ responsive websites</span>
+                                </div>
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Reduced load time by 50%" data-text-ar="Tối ưu hiệu năng, giúp giảm 50% thời gian tải trang.">Reduced load time by 50%</span>
+                                </div>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Vue.js</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">SASS</span>
+                                <span class="tag">Webpack</span>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-year">2023 - 2024</div>
+                            </div>
+                            <h3 class="timeline-title" data-text-en="Junior Developer(internship)" data-text-ar="Lập trình viên Junior (Thực tập)">Junior Developer</h3>
+                            <div class="timeline-company">
+                                <i class="fas fa-building"></i>
+                                VTV Live
+                            </div>
+                            <p class="timeline-description" data-text-en="Developed features for the “Onlive” web platform. Built a recommendation system to suggest videos based on user behavior and preferences. Developed computer vision algorithms to extract and classify tags for videos and live streams. Participated in data collection, processing, and analysis using SQL. Gained hands-on experience working with AWS services. Acquired practical experience in developing and optimizing artificial intelligence algorithms." data-text-ar="Phát triển các tính năng cho nền tảng web “Onlive”. Xây dựng hệ thống recommendation gợi ý video dựa trên hành vi và thói quen người dùng. Phát triển thuật toán thị giác máy tính để trích xuất và phân loại tag cho video và livestream. Tham gia quy trình thu thập, xử lý và phân tích dữ liệu bằng SQL. Học hỏi và làm việc với các dịch vụ AWS. Tích lũy kinh nghiệm trong phát triển và tối ưu các thuật toán Trí tuệ Nhân tạo.">
+                                Developed websites using HTML, CSS, and JavaScript. Learned best practices in web development. Worked on various client projects and gained experience in modern web technologies.
+                            </p>
+                            <div class="timeline-achievements">
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Completed 2 projects" data-text-ar="Hoàn thành 2 dự án.">Completed 2 projects</span>
+                                </div>
+                                <div class="achievement-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span data-text-en="Learned and applied Git, Docker, AWS, and modern Artificial Intelligence algorithms." data-text-ar="Chủ động học và áp dụng Git, Docker, AWS cùng các thuật toán Trí tuệ Nhân tạo hiện đại.">Learned modern frameworks</span>
+                                </div>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">AWS</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Yolo v5</span>
+                                <span class="tag">Git</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">04.</span>
+                    <h2 class="section-title">
+                        <span class="title-text" data-text-en="Projects" data-text-ar="Dự án">Projects</span>
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="View Project">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-placeholder">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" data-text-en="E-Commerce Platform" data-text-ar="Nền tảng thương mại điện tử">E-Commerce Platform</h3>
+                            <p class="project-description" data-text-en="A complete e-commerce platform with payment integration and advanced inventory management." data-text-ar="Nền tảng thương mại điện tử hoàn chỉnh với tích hợp thanh toán và hệ thống quản lý tồn kho nâng cao.">
+                                A complete e-commerce platform with payment integration and advanced inventory management.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="View Project">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-placeholder">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" data-text-en="Task Management App" data-text-ar="Ứng dụng quản lý công việc">Task Management App</h3>
+                            <p class="project-description" data-text-en="A web application for task management with real-time synchronization and modern design." data-text-ar="Ứng dụng web quản lý công việc với đồng bộ thời gian thực và thiết kế hiện đại.">
+                                A web application for task management with real-time synchronization and modern design.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Firebase</span>
+                                <span class="tag">TypeScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="View Project">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="View Code">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-placeholder">
+                                <i class="fas fa-blog"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" data-text-en="Blog Platform" data-text-ar="Nền tảng blog">Blog Platform</h3>
+                            <p class="project-description" data-text-en="A modern blog platform with CMS features and beautiful UI design." data-text-ar="Nền tảng blog hiện đại với các tính năng quản trị nội dung (CMS) và giao diện người dùng đẹp mắt.">
+                                A modern blog platform with CMS features and beautiful UI design.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Prisma</span>
+                                <span class="tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-number">05.</span>
+                    <h2 class="section-title">
+                        <span class="title-text" data-text-en="Contact" data-text-ar="Liên hệ">Contact</span>
+                    </h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="contact-label" data-text-en="Email" data-text-ar="Email">Email</h4>
+                                <a href="mailto:minhhoan.tmh@gmail.com" class="contact-value">minhhoan.tmh@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="contact-label" data-text-en="Phone" data-text-ar="Điện thoại">Phone</h4>
+                                <a class="contact-value">+337 43 29 83 95</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4 class="contact-label" data-text-en="Location" data-text-ar="Địa điểm">Location</h4>
+                                <span class="contact-value" data-text-en="Lille, France" data-text-ar="Lille, France">Lille, France</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Name" data-placeholder-en="Name" data-placeholder-ar="Tên" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email" data-placeholder-en="Email" data-placeholder-ar="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Subject" data-placeholder-en="Subject" data-placeholder-ar="Chủ đề" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input form-textarea" rows="5" placeholder="Message" data-placeholder-en="Message" data-placeholder-ar="Tin nhắn" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <span data-text-en="Send Message" data-text-ar="Gửi tin nhắn">Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text-wrapper">
+                    <p class="footer-text">
+                        <span class="footer-copyright">© 2026 Trần Minh Hoàn</span>
+                        <span class="footer-divider">•</span>
+                        <span class="footer-built">AI Engineer & Data Scientist</span>
+                    </p>
+                    <p class="footer-author">
+                        <span class="footer-by-text" data-text-en="by" data-text-ar="Template by">by</span>
+                        <a href="linkedin.com/in/mohammad-abu-sakour-kn" target="_blank" rel="noopener noreferrer" class="footer-author-link">
+                            <i class="fas fa-code"></i>
+                            <span>Kan3an</span>
+                        </a>
+                    </p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/minhhoantran" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Linkedin-in">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/MinhHoan1234" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.facebook.com/vung.vung.12720100" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Motion One loaded dynamically -->
+    <script src="js_member2.js"></script>
+</body>
+</html>
+
